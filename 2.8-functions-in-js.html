@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2018 by platium111 (http://jsbin.com/qefijok/36/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script id="jsbin-javascript">
+//2.8-functions-in-js
+// -> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+// -> creat
+// -> access element
+
+// -> loop over : using forEach()
+const fruits = ['Apple', 'Banana'];
+fruits.forEach((item, index, array) => {
+  console.log(item, index);
+});
+
+// -> add/remove to end: push()/pop() ? why number
+const addedFruits = fruits.push('Grape');
+console.log('fruits:'+fruits); // addedFruits is just return length
+
+const newTest = [...fruits, 'Grapes'];
+console.log('newTest: '+newTest);
+
+// -> add/remove to front: unshift()/shift()
+
+// -> find index of item : indexOf('Banana')
+console.log('index of item:' + fruits.indexOf('Banana'));
+
+// -> remove an item by index: splice()
+// 2 is index start, 1 is how many
+fruits.splice(2,1);
+console.log('remove item by index:'+fruits);
+
+// -> copy array | 2 ways can use spread in ES6
+const shallowCopy = fruits.slice();
+console.log(shallowCopy);
+
+//-----IMPORTANT FUNCTIONS------
+// -> map(): go through every element + run method -> return new array
+const array1 = [1,2,3];
+const newArray1 = array1.map(el => el * 2);
+console.log('map():'+newArray1);
+
+// -> find(): go through every element, if satisfy test -> retrun first element
+// if don't found, then return undefined
+const array2 = [2, 4, 10, 15];
+const found = array2.find(el => el < 10);
+console.log('find():'+found);
+
+// -> findIndex(): go through every element, if satisfy test -> return index of that element
+const array3 = [2, 5, 10];
+const foundIndex = array3.findIndex(el => el==5);
+console.log('findIndex():'+foundIndex);
+
+// -> filter(): go through every element, if satisfy test -> return new array of elements
+const array4 = [2,4,6,15];
+const foundArray = array4.filter(el => el > 5);
+console.log('filter():'+foundArray);
+
+// -> reduce(): against accumulator to each element(left to right) to reduce to 1 value
+const array5 = [2,4,5,6];
+const reducedResult = array5.reduce((accumulator, element) => accumulator + element);
+console.log('reduce():'+reducedResult);
+
+const funReduce = (ac, el) => ac + el;
+console.log('reduce():'+array5.reduce(funReduce,3)); // plus 3
+
+// -> merge 2 or more array
+const array6 = ['a','b','c'];
+const array7 = ['d','e','f'];
+console.log('concat():'+array6.concat(array7));
+</script>
+</body>
+</html>
