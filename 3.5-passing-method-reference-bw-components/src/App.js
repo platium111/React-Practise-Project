@@ -17,12 +17,12 @@ class App extends Component {
     ]
   }
 
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     // console.log('was clicked!');
     // NOT DO THIS this.state.persons[0].name = 'Quang Hiep';
     this.setState({
       persons: [
-        { name: 'Maximum', age:28},
+        { name: newName, age:28},
         { name: 'Hiep', age:29},
         { name: 'Huy', age:33}
       ]
@@ -35,15 +35,16 @@ class App extends Component {
       <div className="App">
         <h1> Hi, I am Hiep coding React app </h1>
         <p>this is awesome</p>
-        {/* -> Don't use switchNameHandler() because it will run instancely after rendering */}
-        <button onClick={this.switchNameHandler}>Switch name</button>
+        {/* (1) using error function and pass value */}
+        <button onClick={() => this.switchNameHandler('chuanman')}>Switch name</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age}/>
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          click={this.switchNameHandler}/>
+          // (2) using bind to pass value
+          click={this.switchNameHandler.bind(this, 'Chuanman!!')}/>
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age}/>
