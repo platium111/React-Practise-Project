@@ -1,5 +1,7 @@
-//3.7-style-css
+//3.8-inner-style-css
 // -> make new Person.css -> import style
+// -> basic React https://reactjs.org/docs/hello-world.html
+// -> event tutorial https://reactjs.org/docs/events.html
 
 import React, { Component } from 'react';
 import './App.css';
@@ -41,13 +43,24 @@ class App extends Component {
   }
 
   render() {
+    //3.8 changed here
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
     return (
       //just use in one root div App
       <div className="App">
         <h1> Hi, I am Hiep coding React app </h1>
         <p>this is awesome</p>
         {/* (1) using error function and pass value */}
-        <button onClick={() => this.switchNameHandler('chuanman')}>Switch name</button>
+        <button 
+          style={style}
+          onClick={() => this.switchNameHandler('chuanman')}>Switch name</button>
         <Person 
           name={this.state.persons[0].name} 
           age={this.state.persons[0].age}/>
