@@ -16,7 +16,7 @@ class App extends Component {
       { name: 'Hiep', age:29},
       { name: 'Huy', age:30}
     ],
-    showPerson: false
+    showPerson: false // 3.10 changed here
   }
 
   switchNameHandler = (newName) => {
@@ -58,6 +58,7 @@ class App extends Component {
       cursor: 'pointer'
     };
 
+    //3.10 changed here
     let persons = null;
     if(this.state.showPerson) {
       persons = (
