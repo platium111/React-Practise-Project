@@ -1,5 +1,5 @@
-//3.5-passing-method-reference-bw-components
-// -> props has event, parent has events bz state only uses in App.js
+//3.7-style-css
+// -> make new Person.css -> import style
 
 import React, { Component } from 'react';
 import './App.css';
@@ -29,6 +29,17 @@ class App extends Component {
     })
   }
 
+  // changed here
+  nameChangedHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: "Max", age:28},
+        { name: event.target.value, age:29},
+        { name: 'Huy', age:33}
+      ]
+    })
+  }
+
   render() {
     return (
       //just use in one root div App
@@ -43,8 +54,10 @@ class App extends Component {
         <Person 
           name={this.state.persons[1].name} 
           age={this.state.persons[1].age}
-          // (2) using bind to pass value
-          click={this.switchNameHandler.bind(this, 'Chuanman!!')}/>
+          // (2) recommend- using bind to pass value
+          click={this.switchNameHandler.bind(this, 'Chuanman!!')}
+          changed={this.nameChangedHandler}/>
+          {/* changed here */}
         <Person 
           name={this.state.persons[2].name} 
           age={this.state.persons[2].age}/>
