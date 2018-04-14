@@ -1,5 +1,6 @@
 import React from 'react';
-import './Person.css';
+// 4.3 changed here
+import classes from './Person.css';
 // props mean properties
 const person = (props) => {
     // 4.9 changed here
@@ -11,8 +12,8 @@ const person = (props) => {
 
     return (       
         // changed here 3.7
-        // 4.9 changed here
-        <div className="Person">
+        // 4.3 changed here
+        <div className={classes.Person}>
             <p onClick={props.click}>I'm {props.name} and I'm {props.age} year old!</p>
             <p>{props.children}</p>
             {/* change below code with onChange & value */}

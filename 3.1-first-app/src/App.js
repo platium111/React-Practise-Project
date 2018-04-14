@@ -1,10 +1,12 @@
-//4.2-using-radium-with-media-query
-// -> it is used for inline style code bz normally if
-// we use App.css, it means globally, we can code button:hover style (sudo selector)
-// but for inner style, we can't code like that -> using Radium, which for sudo selector
-
+//4.3-enable-css-modules
+// -> setup for css modules by, it acts as Radium -> make local css for js file
+// npm run eject
+// config webpack
+// code: change import and using normal 
+// we make @media, change event
+// https://github.com/css-modules/css-modules
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css'; // 4.3 changed here
 // -> can be any name ~ human but need the same when using tag
 // but should uppercase
 import Person from './Person/Person';
@@ -68,6 +70,9 @@ class App extends Component {
 
     //3.10 changed here
     let persons = null;
+    // 4.3 changed here
+    let btnClass = '';
+
     if(this.state.showPerson) {
       persons = (
         <div> 
@@ -87,30 +92,29 @@ class App extends Component {
           })}
         </div>
       );
-      // 4.1 changed here
-      style.backgroundColor = 'red';
-      
+      // 4.3 access to App.css -> .Red
+      btnClass = classes.Red;
     }
 
-    // 4.1 changed here
-    let classes = [];
+    // 4.3 changed here
+    let assgignedClasses = [];
     if(this.state.persons.length <= 2) {
-      classes.push('red');
+      assgignedClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold');
+      assgignedClasses.push(classes.bold);
     }
 
     return (
-      
-        <div className="App">
+        // 4.3 changed here using .App class
+        <div className={classes.App}>
           <h1> Hi, I am Hiep coding React app </h1>
           {/* 4.1 changed here */}
-          <p className={classes.join(' ')}>this is awesome</p>
+          <p className={assgignedClasses.join(' ')}>this is awesome</p>
           {/* (1) using error function and pass value */}
           {/* 3.9 changed here */}
           <button 
-            style={style}
+            className={btnClass}
             onClick={this.togglePersonHandler}>Switch name
           </button>
           {persons}
