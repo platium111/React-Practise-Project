@@ -1,6 +1,5 @@
 import React from 'react';
 import './Person.css';
-import Radium, {StyleRoot} from 'radium'
 // props mean properties
 const person = (props) => {
     // 4.9 changed here
@@ -13,7 +12,7 @@ const person = (props) => {
     return (       
         // changed here 3.7
         // 4.9 changed here
-        <div className="Person" style={style}>
+        <div className="Person">
             <p onClick={props.click}>I'm {props.name} and I'm {props.age} year old!</p>
             <p>{props.children}</p>
             {/* change below code with onChange & value */}
@@ -23,4 +22,4 @@ const person = (props) => {
     )
 };
 
-export default Radium(person);
+export default person;

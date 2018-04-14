@@ -9,7 +9,6 @@ import './App.css';
 // but should uppercase
 import Person from './Person/Person';
 //registerServiceWork: for caching - dont need to touch on this file
-import Radium, {StyleRoot} from 'radium';
 class App extends Component {
   
   state = {
@@ -64,11 +63,7 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      // 4.2 changed here
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      
     };
 
     //3.10 changed here
@@ -94,11 +89,7 @@ class App extends Component {
       );
       // 4.1 changed here
       style.backgroundColor = 'red';
-      // 4.2 changed here
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      
     }
 
     // 4.1 changed here
@@ -111,8 +102,7 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
-        {/* //just use in one root div App */}
+      
         <div className="App">
           <h1> Hi, I am Hiep coding React app </h1>
           {/* 4.1 changed here */}
@@ -126,7 +116,7 @@ class App extends Component {
           {persons}
           
         </div>
-      </StyleRoot>
+      
     );
     
     //1st: element div, 2nd default null, 3st may be text or maybe element
@@ -136,4 +126,4 @@ class App extends Component {
 }
 
 //4.2 changed here
-export default Radium(App);
+export default App;
