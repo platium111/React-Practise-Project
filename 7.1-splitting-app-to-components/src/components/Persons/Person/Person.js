@@ -1,4 +1,4 @@
- import React from 'react';
+import React from 'react';
 // 4.3 changed here
 import classes from './Person.css';
 // props mean properties

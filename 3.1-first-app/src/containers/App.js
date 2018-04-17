@@ -1,16 +1,11 @@
-//4.3-enable-css-modules
-// -> setup for css modules by, it acts as Radium -> make local css for js file
-// npm run eject
-// config webpack
-// code: change import and using normal 
-// we make @media, change event
-// https://github.com/css-modules/css-modules
+//7.1-splitting-app-to-components
+// -> only use when some code you know it may has errors -> for debugging
 import React, { Component } from 'react';
 import classes from './App.css'; // 4.3 changed here
-// -> can be any name ~ human but need the same when using tag
-// but should uppercase
-import Person from './Person/Person';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/Cockpit/Cockpit'
 //registerServiceWork: for caching - dont need to touch on this file
+// import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 class App extends Component {
   
   state = {
@@ -70,62 +65,30 @@ class App extends Component {
 
     //3.10 changed here
     let persons = null;
-    // 4.3 changed here
-    let btnClass = '';
-
+    
     if(this.state.showPerson) {
-      persons = (
-        <div> 
-          {/* 3.11 changed here
-          -> key need to be unique -> it may be index or id in data
-          -> change deletePersonHandler
-          -> change nameChangeHandler
-          */}
-          
-          {this.state.persons.map((person, index) => {
-            return <Person 
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
-          })}
-        </div>
-      );
-      // 4.3 access to App.css -> .Red
-      btnClass = classes.Red;
+      persons = 
+        <Persons
+          persons = {this.state.persons}
+          clicked = {this.deletePersonHandler}
+          changed={this.nameChangedHandler} />
+          ;
     }
-
-    // 4.3 changed here
-    let assgignedClasses = [];
-    if(this.state.persons.length <= 2) {
-      assgignedClasses.push(classes.red);
-    }
-    if(this.state.persons.length <= 1) {
-      assgignedClasses.push(classes.bold);
-    }
-
     return (
         // 4.3 changed here using .App class
         <div className={classes.App}>
-          <h1> Hi, I am Hiep coding React app </h1>
-          {/* 4.1 changed here */}
-          <p className={assgignedClasses.join(' ')}>this is awesome</p>
-          {/* (1) using error function and pass value */}
-          {/* 3.9 changed here */}
-          <button 
-            className={btnClass}
-            onClick={this.togglePersonHandler}>Switch name
-          </button>
+          <Cockpit 
+            showPerson={this.state.showPerson} 
+            persons={this.state.persons}
+            clicked= {this.togglePersonHandler} />
           {persons}
-          
         </div>
       
     );
     
     //1st: element div, 2nd default null, 3st may be text or maybe element
     // -> this code is not in used, compared to code above which is JSX
-    return React.createElement('div', {className: 'App'}, React.createElement('h1',null,'I am Hiep'));
+    // return React.createElement('div', {className: 'App'}, React.createElement('h1',null,'I am Hiep'));
   }
 }
 
