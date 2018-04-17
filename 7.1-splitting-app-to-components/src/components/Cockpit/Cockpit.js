@@ -4,6 +4,7 @@ const cockpit = (props) => {
     // 4.3 changed here
     let assgignedClasses = [];
     let btnClass = '';
+    //[todo] Change color when click button
     if(props.showPerson) {
         btnClass = classes.Red;
     }

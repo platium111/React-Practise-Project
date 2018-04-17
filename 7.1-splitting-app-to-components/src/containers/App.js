@@ -18,6 +18,8 @@ class App extends Component {
   }
 
   // 3.11 changed here -> immutable state change
+  //[todo] words change when typing in Textbox
+  // if need event value -> method need (event) in Persons
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
@@ -38,12 +40,14 @@ class App extends Component {
   }
 
   //3.9 changed here
+  //[todo] show list when click button
   togglePersonHandler = () => {
     const doesShow = this.state.showPerson;
     this.setState({showPerson: !doesShow});
   }
   
   // 3.11 changed here
+  //[todo] delete Person in list when click into <p>
   deletePersonHandler = (personIndex) => {
     const persons = this.state.persons.slice();
     // const persons = [...this.state.persons]; // equavalent to make immutable object
@@ -64,6 +68,7 @@ class App extends Component {
     };
 
     //3.10 changed here
+    //[todo->] show list when click button
     let persons = null;
     
     if(this.state.showPerson) {
